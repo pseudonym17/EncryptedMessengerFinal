@@ -5,6 +5,8 @@ import android.graphics.Insets.add
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Layout
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -58,10 +60,12 @@ class Chat : AppCompatActivity() {
                         var message = postSnapshot.getValue(Message::class.java)
                         // Get just the encrypted message text
                         val encryptedMessage = message?.message.toString()
-                        val passphrase = findViewById<EditText>(R.id.passphrase).toString()
-                        val decryptedMessage = decrypt(encryptedMessage, passphrase)
-                        // change the encrypted message to the decrypted one
-                        message?.message = decryptedMessage
+                        val passphrase = findViewById<EditText>(R.id.passphrase).text.toString()
+                        if (passphrase.length >= 6) {
+                            val decryptedMessage = decrypt(encryptedMessage, passphrase)
+                            // change the encrypted message to the decrypted one
+                            message?.message = decryptedMessage
+                        }
                         messageList.add(message!!)
                     }
                     messageAdapter.notifyDataSetChanged()
@@ -72,7 +76,6 @@ class Chat : AppCompatActivity() {
         val decryptBtn = findViewById<ImageView>(R.id.decryptBtn)
         decryptBtn.setOnClickListener{
             val passphrase = findViewById<EditText>(R.id.passphrase).text.toString()
-            Toast.makeText(this@Chat, "Phrase: $passphrase", Toast.LENGTH_SHORT).show()
 
             val listener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -83,7 +86,7 @@ class Chat : AppCompatActivity() {
                         // Get just the encrypted message text
                         val encryptedMessage = message?.message.toString()
                         if (passphrase.length < 6) {
-                            Toast.makeText(this@Chat, "Phrase must be at least 6 characters: $passphrase", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@Chat, "Passphrase must be at least 6 characters: $passphrase", Toast.LENGTH_SHORT).show()
                         } else {
                             // Or decrypt the message
                             val decryptedMessage = decrypt(encryptedMessage, passphrase)
@@ -104,12 +107,12 @@ class Chat : AppCompatActivity() {
         sendButton.setOnClickListener {
             val message = messageBox.text.toString()
             val passphrase = findViewById<EditText>(R.id.passphrase).text.toString()
-            val encryptedMessage = encrypt(message, passphrase)
-            val messageObject = Message(encryptedMessage, senderUid)
             // Only send if passphrase is long enough
             if (passphrase.length < 6) {
-                Toast.makeText(this@Chat, "Phrase must be at least 6 characters: $passphrase", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Chat, "Passphrase must be at least 6 characters: $passphrase", Toast.LENGTH_SHORT).show()
             } else {
+                val encryptedMessage = encrypt(message, passphrase)
+                val messageObject = Message(encryptedMessage, senderUid)
                 db.child("chats").child(senderRoom!!).child("messages").push()
                     .setValue(messageObject).addOnSuccessListener {
                         db.child("chats").child(receiverRoom!!).child("messages").push()
@@ -159,6 +162,13 @@ class Chat : AppCompatActivity() {
                 key.add(value)
             }
         }
+
+        for (i in mChar..(mChar + (20 * fChar)) step fChar){
+            val index = i % 93
+            val num = key[index]
+            key.removeAt(index)
+            key.add(num)
+        }
         return key
     }
 
@@ -186,5 +196,25 @@ class Chat : AppCompatActivity() {
             }
         }
         return decryptedMessage
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu2, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.exit){
+            val intent = Intent(this, Contacts::class.java)
+            finish()
+            startActivity(intent)
+            return true
+        } else if (item.itemId == R.id.logout){
+            val intent = Intent(this, Login::class.java)
+            finish()
+            startActivity(intent)
+            return true
+        }
+        return true
     }
 }
