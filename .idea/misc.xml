@@ -15,6 +15,19 @@
         <entry key="..\:/Users/Cailey/AndroidStudioProjects/Messenger11_21/app/src/main/res/layout/sent.xml" value="0.2" />
         <entry key="..\:/Users/Cailey/AndroidStudioProjects/Messenger11_21/app/src/main/res/layout/user_layout.xml" value="0.1" />
         <entry key="..\:/Users/Cailey/AndroidStudioProjects/Messenger11_21/app/src/main/res/menu/menu.xml" value="0.10277777777777777" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2921875" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/drawable/btn_background.xml" value="0.2921875" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/drawable/edit_background.xml" value="0.2921875" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2921875" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/drawable/message_box_background.xml" value="0.2921875" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/drawable/send_background.xml" value="0.2921875" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/layout/activity_chat.xml" value="0.25" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/layout/activity_sign_up.xml" value="0.19610507246376813" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/layout/activity_splash_screen.xml" value="0.19610507246376813" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/layout/receive.xml" value="0.19610507246376813" />
+        <entry key="..\:/Users/disne/Documents/GitHub/EncryptedMessengerFinal/app/src/main/res/layout/sent.xml" value="0.19610507246376813" />
       </map>
     </option>
   </component>

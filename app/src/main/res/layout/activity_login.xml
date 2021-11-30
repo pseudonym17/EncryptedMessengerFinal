@@ -12,7 +12,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="70dp"
-        android:src="@drawable/chatlogo"
+        android:src="@drawable/emlogo"
         android:layout_centerHorizontal="true" />
 
     <EditText

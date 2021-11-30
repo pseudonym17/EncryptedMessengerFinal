@@ -34,7 +34,7 @@
             android:textColorHint="@color/hint"
             android:textColor="@color/white"
             android:paddingLeft="10dp"
-            android:background="@drawable/message_box_background"
+            android:background="@drawable/edit_background"
             />
 
         <ImageView
