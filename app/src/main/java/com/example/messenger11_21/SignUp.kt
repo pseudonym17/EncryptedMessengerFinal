@@ -48,7 +48,8 @@ class SignUp : AppCompatActivity() {
                 // Ensure that the username is unique
                 var uniqueUser = true
                 db = FirebaseDatabase.getInstance().getReference()
-                db.child("user").addValueEventListener(object: ValueEventListener {
+                db.child("user").addListenerForSingleValueEvent(object:ValueEventListener {
+                //db.child("user").addValueEventListener(object: ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         for (postSnapshot in snapshot.children) {
                             val username = postSnapshot.child("name").value.toString()
